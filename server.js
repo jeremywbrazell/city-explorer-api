@@ -25,7 +25,7 @@ function Forecast(obj) {
 
 
 
-//turn on the server!
+//turn on the server
 app.listen(PORT,() => {
     console.log(`${PORT}`)
 });
