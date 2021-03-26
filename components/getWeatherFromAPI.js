@@ -12,15 +12,15 @@ function getWeatherFromAPI(lat, lon, response) {
     superagent
         .get(url)
         .then(superagentResults => {
-            console.log('this is the string we`re looking for',superagentResults);
+            // console.log('this is the string we`re looking for',superagentResults);
             const repArray = superagentResults.body.data.map(obj => {
                return new Weather(obj);
             })
-            console.log(getWeatherFromAPI)
+            // console.log(getWeatherFromAPI)
             response.status(200).send(repArray);
         })
     .catch(err => {
-        // console.log(err)
+        console.log(err)
         response.status(500).send(err.message)
     })
 }
