@@ -1,42 +1,27 @@
-'use strict'
+'use strict';
 
-require('dotenv').config();
+//libraries
+require('dotenv');
 const express = require('express');
 const cors = require('cors');
 
-const getWeather = require('./components/weather');
+//server initialization
 const app = express();
 
-const superagent = require('superagent');
-const getMovies = require('./components/getMovies');
+// opens up server
 app.use(cors());
 
+// require
+const weather = require('./starter-code-lab10/modules/weather.js');
+const movie = require('./starter-code-lab10/modules/getMovies.js')
+
+// PORT
 const PORT = process.env.PORT || 3002;
 
-const WEATHER_API_KEY = process.env.WEATHER_API_KEY;
-const MOVIE_API_KEY = process.env.MOVIE_API_KEY;
+// routes
+app.get('weather', weather)
+app.get('/movie', movie);
 
 
-app.get('/test', (request, response) => {
-    response.send('hello world');
-});
-app.get('/weather', getWeather);
-function Weather(obj) {
-    this.description = obj.weather.description;
-    this.date = obj.datetime;
-}
-app.get('/movies', getMovies);
-function Weather(obj) {
-    this.description = obj.weather.description;
-    this.date = obj.datetime;
-}
 
-app.use('*', (request, response) => {
-    response.status(404).send('404: page not found!')
-});
-
-//turn on the server
-app.listen(PORT, () => {
-    console.log(`${PORT}`)})
-
-      
+app.listen(PORT, () => console.log(`Server up on ${process.env.PORT}`));
