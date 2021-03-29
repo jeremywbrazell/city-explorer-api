@@ -5,7 +5,6 @@ const getMoviesFromAPI = require('./getMoviesFromAPI');
 
 function getMovies(request, response) {
   const { movies } = request.query;
-  // go to the movie API
 // console.log(lat, lon);
   getMoviesFromAPI(movies, response);
   console.log(request.query);
