@@ -1,10 +1,11 @@
 'use strict';
 
 //libraries
-require('dotenv');
+
+require('dotenv').config()
+console.log(process.env);
 const express = require('express');
 const cors = require('cors');
-
 //server initialization
 const app = express();
 
@@ -19,9 +20,9 @@ const movie = require('./starter-code-lab10/modules/getMovies.js')
 const PORT = process.env.PORT || 3002;
 
 // routes
-app.get('weather', weather)
+app.get('/weather', weather)
 app.get('/movie', movie);
 
 
 
-app.listen(PORT, () => console.log(`Server up on ${process.env.PORT}`));
+app.listen(PORT, () => console.log(`Server up on ${PORT}`));

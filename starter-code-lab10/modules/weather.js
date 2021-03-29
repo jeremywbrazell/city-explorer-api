@@ -7,10 +7,11 @@ const superagent = require('superagent');
 const getWeatherFromAPI = require('./getWeatherFromAPI');
 
 function getWeather(request, response) {
-  console.log('craziness');
+
   const { city_name, lat, lon } = request.query;
   const key = `weather-${lat}-${lon}`;
   const url = `http://api.weatherbit.io/v2.0/forecast/daily`;
+ 
   const query = {
     key: process.env.WEATHER_API_KEY,
     city: city_name,
@@ -19,9 +20,9 @@ function getWeather(request, response) {
   }
 
   if (cache[key] && (Date.now() - cache[key].timestamp < 70000)) {
-    console.log('Cache hit WEATHER');
+   
   } else {
-    console.log('Cache miss WEATHER');
+   
     cache[key] = {};
     cache[key].timestamp = Date.now();
 
