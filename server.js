@@ -3,7 +3,7 @@
 //libraries
 
 require('dotenv').config()
-console.log(process.env);
+
 const express = require('express');
 const cors = require('cors');
 //server initialization
@@ -21,7 +21,7 @@ const PORT = process.env.PORT || 3002;
 
 // routes
 app.get('/weather', weather)
-app.get('/movie', movie);
+app.get('/movies', movie);
 
 
 

@@ -7,14 +7,13 @@ const superagent = require('superagent');
 const getWeatherFromAPI = require('./getWeatherFromAPI');
 
 function getWeather(request, response) {
-
-  const { city_name, lat, lon } = request.query;
+console.log(request.query);
+  const {  lat, lon } = request.query;
   const key = `weather-${lat}-${lon}`;
   const url = `http://api.weatherbit.io/v2.0/forecast/daily`;
  
   const query = {
     key: process.env.WEATHER_API_KEY,
-    city: city_name,
     lat: lat,
     lon: lon
   }
